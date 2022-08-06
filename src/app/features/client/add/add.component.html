@@ -1,0 +1,32 @@
+<div class="modal-header">
+  Crear Cliente
+</div>
+<div class="modal-body">
+  <div class="fv-row mb-7 fv-plugins-icon-container">
+    <label class="required fw-bold fs-6 mb-2">Nombre</label>
+    <input maxlength="50" type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0"
+      [(ngModel)]="data.name">
+    <div class="fv-plugins-message-container invalid-feedback"></div>
+  </div>
+  <div class="fv-row mb-7 fv-plugins-icon-container">
+    <label class="required fw-bold fs-6 mb-2">Edad</label>
+    <input maxlength="50" type="number" name="age" class="form-control form-control-solid mb-3 mb-lg-0"
+      [(ngModel)]="data.age">
+    <div class="fv-plugins-message-container invalid-feedback"></div>
+  </div>
+  <div class="fv-row mb-7 fv-plugins-icon-container">
+    <label class="required fw-bold fs-6 mb-2">Cantidad de direcciones</label>
+    <input style="margin-left: 139px; width: 100px;" type="number" class="form-control form-control-solid"
+      (input)="duplicatedDiv($event)">
+    <div class="fv-plugins-message-container invalid-feedback"></div>
+  </div>
+  <div class="fv-row mb-7 fv-plugins-icon-container"  *ngFor="let item of items; let i = index">
+    <label class="required fw-bold fs-6 mb-2">Direcciones</label>
+    <input  (change)="addAdress($event)" type="text" name="desktop" class="form-control form-control-solid mb-3 mb-lg-0">
+    <div class="fv-plugins-message-container invalid-feedback"></div>
+</div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-danger" (click)="closeModal()">Cancelar</button>
+  <button class="btn btn-primary" (click)="save()">Guardar</button>
+</div>

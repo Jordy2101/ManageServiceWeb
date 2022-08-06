@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\features",
+    "\\src\\app\\features\\homologarclient"
+  ],
+  "SelectedNode": "\\src\\app\\features\\homologarclient\\homologarclient.component.ts",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,158 @@
+<div class="m-subheader">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                Clientes
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a routerLink='/' class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="m-content">
+    <div>
+        <div body-content class="col-12">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="m-portlet  m-portlet--collapsed m-portlet--tab " m-portlet="true">
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <span class="m-portlet__head-icon m--hide">
+                                    </span>
+                                    <h3 class="m-portlet__head-text">
+                                        Filtros
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="m-portlet__head-tools">
+                                <ul class="m-portlet__nav">
+                                    <li class="m-portlet__nav-item">
+                                        <a href="" m-portlet-tool="toggle"
+                                            class="m-portlet__nav-link m-portlet__nav-link--icon" title=""
+                                            data-original-title="Collapse">
+                                            <i class="la la-angle-down"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form class="m-form m-form--fit m-form--label-align-right">
+                            <div class="m-portlet__body">
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-1 col-form-label">
+                                        Filtro
+                                    </label>
+                                    <div class="col-3">
+                                        <input name="noSecuencoa" type="text" class="form-control"
+                                            [(ngModel)]="filter.keyword" />
+                                    </div>
+                                    <button class="btn btn-primary" (click)="getAll(false, 1)">
+                                        Buscar
+                                    </button>
+                                    <button type="button" (click)='filter={};getAll(true)' class="btn btn-danger ml-2">
+                                        Limpiar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="m-portlet" m-portlet="true">
+                                <div class="m-portlet__head">
+                                    <div class="m-portlet__head-caption">
+                                        <div class="m-portlet__head-title">
+                                            <h3 class="m-portlet__head-text">
+                                                Clientes
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="m-portlet__head-tools">
+                                        <ul class="m-portlet__nav">
+                                            <li class="m-portlet__nav-item">
+                                                <a class="btn btn-info" (click)="createClient()">
+                                                    <span class="fa fa-plus"></span> Agregar Cliente
+                                                </a>
+                                            </li>
+                                            <li class="m-portlet__nav-item">
+                                                <a href="#" m-portlet-tool="toggle"
+                                                    class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                                    <i class="la la-angle-down"></i>
+                                                </a>
+                                            </li>
+                                            <li class="m-portlet__nav-item">
+                                                <a href="#" m-portlet-tool="fullscreen"
+                                                    class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                                    <i class="la la-expand"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="m-portlet__body">
+                                    <div class="m-section">
+                                        <div class="m-section__content text-center">
+                                            <div class="horizontal-scroll">
+                                                <table class="table table-striped m-table scroll wide">
+                                                    <thead>
+                                                        <th>#</th>
+                                                        <th>Nombre del cliente</th>
+                                                        <th>Edad</th>
+                                                        <th>Activo</th>
+                                                        <th>Acciones</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let item of data">
+                                                            <th>{{item.id}}</th>
+                                                            <th>{{item.name}}</th>
+                                                            <th>{{item.age}}</th>
+                                                            <td>
+                                                                <span *ngIf="item.isActive"
+                                                                    class="badge badge-success even-larger-badge">Activo</span>
+                                                                <span *ngIf="!item.isActive"
+                                                                    class="badge badge-danger even-larger-badge">Inactivo</span>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-info dropdown-toggle"
+                                                                        type="button" data-toggle="dropdown"
+                                                                        aria-haspopup="true" aria-expanded="false">
+                                                                        Acciones
+                                                                    </button>
+                                                                    <div class="dropdown-menu">
+                                                                        <div>
+                                                                          <a class="dropdown-item m--font-primary cursor"
+                                                                          (click)="inactivateClient(item.id)">
+                                                                              Innactivar
+                                                                          </a>
+                                                                      </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-xs-12 col-12 d-sm-down-none mt-3">
+                                                <div class="col-md-12 text-center">
+                                                    <ngb-pagination class="d-flex justify-content-center"
+                                                        [collectionSize]="totalItems" [(page)]="page"
+                                                        [maxSize]="itemsPerPage" [boundaryLinks]="true"
+                                                        (pageChange)="pageChanged($event)"></ngb-pagination>
+                                                    <label class="col-2"> 1-10 de {{totalItems}} registros</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

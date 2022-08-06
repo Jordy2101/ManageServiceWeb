@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h5>Crear Servicio</h5>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <label for="">Nombre</label>
+      <input class="form-control" [(ngModel)]="data.name" />
+    </div>
+    <div class="col-6">
+      <label for="">Descripcion</label>
+      <input class="form-control" type="text" [(ngModel)]="data.description" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <label for="">Cliente</label>
+      <select (focusout)="getAdressByClient()" class="form-control m-input" name="seccion" [(ngModel)]="data.idcliente"
+        required>
+        <option value="" selected disabled>Seleccione una categoria</option>
+        <option *ngFor="let item of client" [ngValue]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+    <div class="col-6">
+      <label for="">Tipo de Servicio</label>
+      <select class="form-control m-input" name="seccion" [(ngModel)]="data.idtypeService" required>
+        <option value="" selected disabled>Seleccione una tipo de Servicio</option>
+        <option *ngFor="let item of typeService" [ngValue]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <label for="">Dirrecion a Entregar</label>
+      <select class="form-control m-input" name="seccion" [(ngModel)]="data.idadress" required>
+        <option value="" selected disabled>Seleccione una categoria</option>
+        <option *ngFor="let item of clientAdress" [ngValue]="item.id">{{item.adress}}</option>
+      </select>
+    </div>
+    <div class="col-6">
+      <label for="">Estado</label>
+      <select class="form-control m-input" name="seccion" [(ngModel)]="data.idstatus" required>
+        <option value="" selected disabled>Seleccione una categoria</option>
+        <option *ngFor="let item of status" [ngValue]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-danger" (click)="closeModal()">Cancelar</button>
+  <button type="button " class="btn btn-primary " (click)="create() ">
+    Guardar
+  </button>
+</div>
